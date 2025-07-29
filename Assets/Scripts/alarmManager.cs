@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class gameManager 
+public class alarmManager : MonoBehaviour 
 {
 
     public  UnityEvent alarmActive;
