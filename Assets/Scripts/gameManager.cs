@@ -6,6 +6,6 @@ using UnityEngine.Events;
 public class gameManager 
 {
 
-    public static UnityEvent alarmActive;
-    public static UnityEvent posLastSeen;
+    public  UnityEvent alarmActive;
+    public  UnityEvent posLastSeen;
 }
