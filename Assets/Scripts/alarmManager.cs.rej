@@ -1,0 +1,56 @@
+diff a/Assets/Scripts/alarmManager.cs b/Assets/Scripts/alarmManager.cs	(rejected hunks)
+@@ -23,30 +23,40 @@
+ 
+     // Geting/seting the player transform for the players last known position
+     public Transform lastPositionSeen 
+-    { get 
++    { 
++       // This is the getter, it is specifying that we want to return platerTransform to lastPositionSeen
++        get 
+         { return playerTransform; } 
+-        set 
+-        { 
+-            if (playerTransform != null)
+-            {
++        // This is the setter setting the playerTransform value to be specificaly the transform component
++            set 
++            { 
++                    if (playerTransform != null)
++                    {
+                 // only setting the transform value if the player is seen
+-                if (playerSeen)
+-                {
+-                    playerTransform = transform;
+-                }
+-                else 
+-                {
+-                playerTransform = null;
+-                }
++                        if (playerSeen)
++                        {
++                    // This is setting the public value to be a private (read only) 
++                    // This is done because otherwise the code is a self referential loop
++                            playerTransform = transform;
++                        }
++                        else 
++                        {
++                    // this sets the player transform to null 
++                    // this is done as a redundency to stop the enemies from constantly knowing the player location
++                            playerTransform = null;
++                        }
++                    }
+             }
+-        }
+     } 
+ 
+     // built in event active system
+     public void OnEnable()
+     {
++        // null reference check
+         if (alarmActive != null)
+         {
++            // This is adding the Alarm active function as a listener
++            //may need to be reworked to automatically add new listeners
+             alarmActive.AddListener(alarmActiveFunction);
+         }
+     }
