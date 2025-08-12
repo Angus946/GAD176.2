@@ -7,13 +7,36 @@ public class alarmManager : MonoBehaviour
 {
     // listing the unity events to reference in other scripts
     public  UnityEvent alarmActive;
+
+    private Transform playerTransform;
     public void Start()
     {
-        GameObject.Find("PlayerArmature").GetComponent<Rigidbody>();
-        Rigidbody rb = GetComponent<Rigidbody>();
+        playerTransform = GameObject.Find("PlayerArmature").GetComponent<Transform>();
     }
+
     // bool to reference for turning alarm
     public bool playerSeen;
+
+    // Geting/seting the player transform for the players last known position
+    public Transform lastPositionSeen 
+    { get 
+        { return playerTransform; } 
+        set 
+        { 
+            if (playerTransform != null)
+            {
+                // only setting the transform value if the player is seen
+                if (playerSeen)
+                {
+                    playerTransform = transform;
+                }
+                else 
+                {
+                playerTransform = null;
+                }
+            }
+        }
+    } 
 
     // built in event active system
     public void OnEnable()
@@ -30,6 +53,9 @@ public class alarmManager : MonoBehaviour
         if(alarmActive !=null)
         {
             alarmActive.RemoveListener(alarmActiveFunction);
+            Vector3 pos = lastPositionSeen.position;
+            playerSeen = false;
+            
         }
     }
 
@@ -42,6 +68,9 @@ public class alarmManager : MonoBehaviour
             {
                 // invoking the unity event
                 alarmActive?.Invoke();
+                // debug log showing the player position, when alarm is active
+                if (playerTransform != null)
+                Debug.Log(playerTransform.position);
             }
         }
     }
