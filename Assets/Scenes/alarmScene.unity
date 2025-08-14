@@ -580,9 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84c6364720887d4b9b143742820a205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarmActive:
-    m_PersistentCalls:
-      m_Calls: []
   playerSeen: 0
 --- !u!4 &891898634
 Transform:
