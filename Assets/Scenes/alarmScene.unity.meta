@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/alarmScene.unity.meta
 guid: 70b4b0024ededb242a07e751c2449236
+========
+guid: 9df9eaecb78f87146806f6d9d30e8932
+>>>>>>>> Hugh:Assets/Scenes/Develop.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

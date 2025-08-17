@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/controller.cs.meta
+guid: f45aa40e8d8b45b4389d35df14932d11
+========
+guid: 371f51991e8cbd74bbb6bf47bccd8d79
+>>>>>>>> Hugh:Assets/Scripts/bigBullet.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
