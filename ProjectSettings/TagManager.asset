@@ -3,12 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CinemachineTarget
+  - whatIsGround
+  - whatIsPlayer
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - whatIsPlayer
   - Water
   - UI
   - 
@@ -36,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - whatIsGround
   m_SortingLayers:
   - name: Default
     uniqueID: 0
