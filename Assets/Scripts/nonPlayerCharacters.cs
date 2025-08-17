@@ -87,7 +87,7 @@ namespace angusNameSpace
             }
             else if (alarmManager != null)
             {
-                if  (alarmManager.playerSeen == true)
+                if  (alarmManager.alarmActive == true)
                 {
                     playerSeen = true ;
                 }
@@ -173,9 +173,9 @@ namespace angusNameSpace
             playerTransform = alarmManager.lastPositionSeen;
             if (playerTransform != null)
             {
-                if (alarmManager.playerSeen)
+                if (alarmManager.alarmActive)
                 {
-                    playerSeen = alarmManager.playerSeen;
+                    playerSeen = alarmManager.alarmActive;
                 }
             }
         }
