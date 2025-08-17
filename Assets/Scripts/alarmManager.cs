@@ -18,7 +18,7 @@ public class alarmManager : MonoBehaviour
     public bool playerSeen;
 
     // Geting/seting the player transform for the players last known position
-    public Transform lastPositionSeen 
+    public Transform lastPositionSeen   
     { get 
         { return playerTransform; } 
         set 
@@ -30,10 +30,7 @@ public class alarmManager : MonoBehaviour
                 {
                     playerTransform = transform;
                 }
-                else 
-                {
-                playerTransform = null;
-                }
+                
             }
         }
     } 
