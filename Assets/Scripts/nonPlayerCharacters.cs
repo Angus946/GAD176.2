@@ -84,13 +84,7 @@ namespace angusNameSpace
             if( Physics.CheckSphere(transform.position, sightRange, whatIsPlayer))
             {
                  playerSeen = true;
-            }
-            else if (alarmManager != null)
-            {
-                if  (alarmManager.alarmActive == true)
-                {
-                    playerSeen = true ;
-                }
+                alarmManager.alarmActive = true;
             }
             else
             {
