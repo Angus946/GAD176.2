@@ -1,79 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class alarmManager : MonoBehaviour 
 {
-    // listing the unity events to reference in other scripts
-    public static UnityEvent alarmActive;
+    //HHB Wrote This Script
 
-    private Transform playerTransform;
-    public void Start()
+    public bool alarmActive = false;
+    public Transform lastPositionSeen;
+    public AudioSource alarmSound;
+    public bool alarmSoundActive;
+    public float alarmTimer = 0f;
+    public float alarmTimerMax = 0f;
+
+    void Start()
     {
-        playerTransform = GameObject.Find("PlayerArmature").GetComponent<Transform>();
+    alarmSound = GetComponent<AudioSource>();
+
+        if (alarmSound != null)
+        {
+            alarmSound.loop = true;
+        }
+        else
+        {
+        Debug.LogWarning("No AudioSource found! Go fix it! Null Error!");
+        }
     }
 
-    // bool to reference for turning alarm
-    public bool playerSeen;
-
-    // Geting/seting the player transform for the players last known position
-    public Transform lastPositionSeen   
-    { get 
-        { return playerTransform; } 
-        set 
-        { 
-            if (playerTransform != null)
+    void Update()
+    {
+        //Alarm is Active
+        if (alarmActive == true)
+        {
+            alarmTimer += Time.deltaTime;
+            if (alarmSoundActive == false)
             {
-                // only setting the transform value if the player is seen
-                if (playerSeen)
-                {
-                    playerTransform = transform;
-                }
-                
+                alarmSound.Play();
+                alarmSoundActive = true;
             }
         }
-    } 
 
-    // built in event active system
-    public void OnEnable()
-    {
-        if (alarmActive != null)
+        //Alarm is Inactive
+        else //sads
         {
-            alarmActive.AddListener(alarmActiveFunction);
+            alarmSound.Stop();
+            alarmSoundActive = false;
         }
-    }
 
-    // built in event disable system
-    public void OnDisable()
-    {
-        if(alarmActive !=null)
+        //Reset the Alarm after Max Exceeded and Disable Alarm
+        if (alarmTimer >= alarmTimerMax && alarmActive == true)
         {
-            alarmActive.RemoveListener(alarmActiveFunction);
-            Vector3 pos = lastPositionSeen.position;
-            playerSeen = false;
-            
-        }
-    }
-
-    private void Update()
-    {
-        // checking the player seen bool to active alarm
-        if (playerSeen)
-        {
-            if (alarmActive != null)
-            {
-                // invoking the unity event
-                alarmActive?.Invoke();
-                // debug log showing the player position, when alarm is active
-                if (playerTransform != null)
-                Debug.Log(playerTransform.position);
-            }
-        }
-    }
-    // function for test purposes
-    public void alarmActiveFunction()
-    {
-        Debug.Log("alarm is active");
+            alarmActive = false;
+            alarmTimer = 0f;
+        }   
     }
 }
