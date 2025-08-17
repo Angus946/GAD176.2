@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class alarmManager : MonoBehaviour 
 {
     // listing the unity events to reference in other scripts
-    public  UnityEvent alarmActive;
+    public static UnityEvent alarmActive;
 
     private Transform playerTransform;
     public void Start()
