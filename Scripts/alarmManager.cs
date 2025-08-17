@@ -17,6 +17,7 @@ public class alarmManager : MonoBehaviour
     {
     alarmSound = GetComponent<AudioSource>();
 
+    //If the alarm is on, loop the sound.
         if (alarmSound != null)
         {
             alarmSound.loop = true;
@@ -41,7 +42,7 @@ public class alarmManager : MonoBehaviour
         }
 
         //Alarm is Inactive
-        else //sads
+        else
         {
             alarmSound.Stop();
             alarmSoundActive = false;
